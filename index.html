@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #fff;
+      background: #ffffff;
       margin: 0;
       padding: 0;
       color: #333;
@@ -46,6 +46,7 @@
       font-size: 16px;
       color: #666;
       margin-bottom: 20px;
+      font-weight: 600;
     }
 
     .option-box {
@@ -96,6 +97,8 @@
       background-color: #cccccc;
       cursor: not-allowed;
       opacity: 0.6;
+      font-weight: bold;
+      line-height: 1.6;
     }
 
     #rewardBtn.enabled {
@@ -113,7 +116,7 @@
     <div class="note-text">Just watch the video for 5 minutes to get your materials instantly!</div>
 
     <div class="option-box">
-      <button class="btn" onclick="startTask()">🎮 Click Here to Start</button>
+      <button class="btn" onclick="startTask()">Click Here to Start</button>
       <div id="taskSection" style="display:none;">
         <div id="player"></div>
         <div id="timer">Timer: 5:00</div>
@@ -121,7 +124,9 @@
     </div>
 
     <div class="option-box">
-      <button id="rewardBtn" onclick="downloadReward()" disabled>🏱 Collect Your Reward - Download Now</button>
+      <button id="rewardBtn" onclick="downloadReward()" disabled>
+        Collect Your Reward<br>Download Now
+      </button>
     </div>
   </div>
 
