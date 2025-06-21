@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Get your Reward for free</title>
+  <title>Get your Reward for Free</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -14,17 +14,10 @@
       color: #333;
     }
 
-    body {
-      padding-top: 1cm;
-    }
-
     .container {
       max-width: 800px;
       margin: 0 auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      padding: 30px;
+      padding: 30px 20px;
       text-align: center;
     }
 
@@ -40,10 +33,23 @@
     }
 
     h1 {
-      color: #003366;
       font-size: 26px;
       font-weight: 700;
       margin-bottom: 10px;
+      color: #003366;
+    }
+
+    .color-change {
+      display: inline-block;
+      animation: colorCycle 3s linear infinite;
+    }
+
+    @keyframes colorCycle {
+      0% { color: #1565c0; }
+      25% { color: #1e88e5; }
+      50% { color: #388e3c; }
+      75% { color: #f57c00; }
+      100% { color: #d32f2f; }
     }
 
     .note-text {
@@ -115,8 +121,8 @@
 <body>
   <div class="container">
     <img src="1.jpg" alt="Logo" class="logo" />
-    
-    <h1>Get your Reward for free</h1>
+
+    <h1>Get your Reward for <span class="color-change">Free</span></h1>
     <div class="note-text">Just watch the video for 5 minutes to get your materials instantly!</div>
 
     <div class="option-box">
