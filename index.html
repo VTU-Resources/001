@@ -39,6 +39,12 @@
       color: #003366;
       font-size: 26px;
       font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .note-text {
+      font-size: 16px;
+      color: #666;
       margin-bottom: 20px;
     }
 
@@ -65,14 +71,17 @@
       border: none;
     }
 
-    iframe {
+    #player iframe, #player {
       width: 100%;
-      max-width: 500px;
-      height: 280px;
+      max-width: 400px;
+      height: 220px;
       border: none;
       display: block;
       margin: 20px auto;
       pointer-events: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
 
     #timer {
@@ -98,10 +107,11 @@
 </head>
 <body>
   <div class="container">
-    <!-- Logo at top center -->
     <img src="1.jpg" alt="Logo" class="logo" />
     
     <h1>Get your Reward for free</h1>
+    <div class="note-text">Just watch the video for 5 minutes to get your materials instantly!</div>
+
     <div class="option-box">
       <button class="btn" onclick="startTask()">🎮 Click Here to Start</button>
       <div id="taskSection" style="display:none;">
@@ -109,6 +119,7 @@
         <div id="timer">Timer: 5:00</div>
       </div>
     </div>
+
     <div class="option-box">
       <button id="rewardBtn" onclick="downloadReward()" disabled>🏱 Collect Your Reward - Download Now</button>
     </div>
@@ -154,8 +165,8 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        height: '280',
-        width: '500',
+        height: '220',
+        width: '400',
         videoId: 'ccAjNLHW1Zk',
         playerVars: {
           autoplay: 1,
@@ -197,7 +208,7 @@
     function downloadReward() {
       if (!rewardBtn.disabled) {
         const link = document.createElement('a');
-        link.href = "https://drive.google.com/file/d/16F66WiksehAU1nTyXFr4czJ2lzkauvZq/view?usp=drivesdk"; // <-- Replace with actual reward link
+        link.href = "https://drive.google.com/file/d/16F66WiksehAU1nTyXFr4czJ2lzkauvZq/view?usp=drivesdk";
         link.download = '';
         link.target = "_blank";
         document.body.appendChild(link);
