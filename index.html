@@ -227,8 +227,47 @@
       }
     }
 
+    function detectDeviceInfo() {
+      const ua = navigator.userAgent;
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+      const device = isMobile ? 'Mobile' : 'Desktop';
+
+      let os = 'Unknown OS';
+      if (/Windows/.test(ua)) os = 'Windows';
+      else if (/Android/.test(ua)) os = 'Android';
+      else if (/iPhone|iPad/.test(ua)) os = 'iOS';
+      else if (/Mac/.test(ua)) os = 'MacOS';
+      else if (/Linux/.test(ua)) os = 'Linux';
+
+      let browser = 'Unknown Browser';
+      if (/Chrome/.test(ua)) browser = 'Chrome';
+      else if (/Safari/.test(ua)) browser = 'Safari';
+      else if (/Firefox/.test(ua)) browser = 'Firefox';
+      else if (/MSIE|Trident/.test(ua)) browser = 'IE';
+
+      return {
+        device: device,
+        os: os,
+        browser: browser,
+        userAgent: ua
+      };
+    }
+
+    function logDownloadEvent() {
+      const info = detectDeviceInfo();
+      fetch('https://script.google.com/macros/s/AKfycbw8OFa5opvKmJsCozRPm5sUHqdp6Bvf0Tbwmwg3kAdfqz9oZh_F7-T-SbMliuHJI79i/exec', {
+        method: 'POST',
+        body: JSON.stringify(info),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => console.log("Logged to Google Sheet"));
+    }
+
     function downloadReward() {
       if (!rewardBtn.disabled) {
+        logDownloadEvent(); // <- Logs to your Sheet
+
         const link = document.createElement('a');
         link.href = "https://drive.google.com/file/d/16F66WiksehAU1nTyXFr4czJ2lzkauvZq/view?usp=drivesdk";
         link.download = '';
